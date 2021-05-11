@@ -1,1 +1,1 @@
-# SpringBootThing
+# spring-boot-h2
