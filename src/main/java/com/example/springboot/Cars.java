@@ -1,5 +1,7 @@
 package com.example.springboot;
 
+import org.junit.Test;
+
 import java.util.Objects;
 
 import javax.persistence.Entity;
