@@ -16,7 +16,7 @@ public class Cars {
     private String brand;
     private String model;
 
-    Cars() {}
+    public Cars() {}
 
     public Cars(String brand, String model) {
 
