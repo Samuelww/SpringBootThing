@@ -10,24 +10,3 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate.ddl-auto: create
-    databaseChangeLog:
-      - preConditions:
-      - runningAs:
-          username: Liquibase
-                      -  changeSet:
-                      id: 1
-                      author: Liquibase
-                      changes:
-                        - createTable:
-                            tableName: test_table
-                            columns:
-                              - column:
-                                  name: test_id
-                                  type: int
-                                  autoIncrement: true
-                                  constraints:
-                                    primaryKey: true
-                                    nullable: false
-                              - column:
-                                  name: test_column
-                                  type: varchar(50)
