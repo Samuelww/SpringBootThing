@@ -26,7 +26,7 @@ public class CreateUserServiceTest {
     @Mock
     private CarsRepository carsRepository;
     @InjectMocks
-    private CreateCarService carService;
+    private CarService carService;
 
     @Test
     public void whenSaveCar_shouldReturnCar() {
