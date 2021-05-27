@@ -1,5 +1,7 @@
 package com.example.springboot;
 
+import org.junit.Test;
+
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -14,7 +16,7 @@ public class Cars {
     private String brand;
     private String model;
 
-    Cars() {}
+    public Cars() {}
 
     public Cars(String brand, String model) {
 
