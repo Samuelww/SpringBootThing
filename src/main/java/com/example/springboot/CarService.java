@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @Service
-public class CreateCarService {
+public class CarService {
 
 
     @Autowired
@@ -20,44 +20,26 @@ public class CreateCarService {
     public Cars createNewCar(Cars car) {
         return repository.save(car);
     }
-}
 
-@Service
- class DeleteCarService {
 
-    @Autowired
-    CarsRepository repository;
 
     public void deleteCar(Long id) {
         repository.findById(id);
         repository.deleteById(id);
     }
-}
 
-@Service
- class DetailCarService {
-    @Autowired
-    CarsRepository repository;
+
 
     public Optional<Cars> listCars(Long id) {
         return repository.findById(id);
     }
-}
 
-@Service
-    class ListCarService {
-    @Autowired
-    CarsRepository repository;
 
     public List<Cars> listAllCars() {
         return repository.findAll();
     }
-}
 
-@Service
- class UpdateCarService {
-    @Autowired
-    CarsRepository repository;
+
 
     public Cars updateCar(Long id, Cars car) throws Exception {
         return repository.findById(id)
@@ -68,5 +50,5 @@ public class CreateCarService {
                 })
                 .orElseThrow(() -> new Exception("Not found"));
     }
-
 }
+
