@@ -1,6 +1,8 @@
 package com.example.springboot;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,37 +10,47 @@ class CarsController {
 
     private final CarsRepository repository;
 
+
     CarsController(CarsRepository repository) {
         this.repository = repository;
     }
 
+    @Autowired
+    ListCarService listService;
+
     @GetMapping("/Cars")
     List<Cars> all() {
-        return repository.findAll();
+        return  listService.listAllCars();
     }
+
+    @Autowired
+    CreateCarService createService;
 
     @PostMapping("/Cars")
     Cars newCar(@RequestBody Cars newCar){
             newCar.setBrand(newCar.getBrand());
             newCar.setModel(newCar.getModel());
 
-                    return repository.save(newCar);
+
+        return createService.createNewCar(newCar);
+
     }
+
+    @Autowired
+    UpdateCarService updateService;
 
     @RequestMapping(value = "/Cars/{id}", method = RequestMethod.PUT)
     Cars replaceCar(@RequestBody Cars newCar, @PathVariable Long id) throws Exception {
-        return repository.findById(id)
-                .map(Car -> {
-                    Car.setBrand(newCar.getBrand());
-                    Car.setModel(newCar.getModel());
-                    return repository.save(Car)
-                            ;
-                })
-                .orElseThrow(() -> new Exception("Not found"));
+
+        return updateService.updateCar(id, newCar);
     }
+
+    @Autowired
+    DeleteCarService deleteService;
 
     @DeleteMapping("/Cars/{id}")
     void deleteCar(@PathVariable Long id) {
-        repository.deleteById(id);
+        deleteService.deleteCar(id);
+
     }
 }

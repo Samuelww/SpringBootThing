@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.Entity;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @EnableAutoConfiguration
 @SpringBootApplication
 public class Application {
